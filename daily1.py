@@ -21,7 +21,7 @@ list2
 list2[2]  #index starts from 0,1,...
 list2[2] = 'Z'  #list is mutable, ie. values can be changed
 list2
-#%%mutatble - changed, immutable- cannot be changed
+#%%mutable - changed, immutable- cannot be changed
 #tuple - multiple type of objects like list, immutable: ( round brackets) : no changes
 tuple1 = (1, 2, 'a', 'b')
 tuple1
@@ -29,6 +29,7 @@ type(tuple1)
 tuple1[1]
 tuple1[1] = 0  #changes not possible, immutable
 tuple1 = (5,45)
+
 tuple1  #overwriting is possible
 #%%
 #Dictionary - key-value pairs : { curly bracket and colon key:value}
@@ -55,7 +56,7 @@ car  #mutable , value can be changed
 from frozendict import frozendict
 fd = frozendict({ 'brand': 'Honda' })
 fd
-fd['brand'] = 'HYUNDIA'   #immutatble
+fd['brand'] = 'HYUNDAI'   #immutatble
 
 #%% { curly bracket, comma}
 #Set - ordered collection of simple items, immutable
@@ -64,6 +65,7 @@ set1
 type(set1)
 
 set2 = {'INDIA','PAKISTAN',  "INDIA"}  #better way
+
 set2
 set3 = {'Australia', 'South Africa', 'INDIA'}
 set3
@@ -159,10 +161,10 @@ list1 = [1,2,3,5]
 list1
 import numpy
 numpy.array([10,20])
-numpy.array([list1])
+numpy.array(list1)
 
 import numpy as np #np is alias
-np1 = np.arange(1,10)
+np1 = np.arange(1,10,2)
 np1
 
 x=np.arange(start=1,stop=1000000,step=2)
@@ -280,7 +282,7 @@ data2a  #not defined
 data2a = pd.read_csv('mtcars.csv') #when csv is in project folder
 data2a
 data2b #not defined
-data2b = pd.read_csv('E:/analytics/projects/pyanalytics/mtcars.csv')
+data2b = pd.read_csv('D:/analytics/projects/pyanalytics/mtcars.csv')
 data2b
 #csv in any other location - full path
 data2b
