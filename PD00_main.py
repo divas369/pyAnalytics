@@ -13,10 +13,11 @@ mtcarsDF = mtcars
 mtcarsDF
 
 #%%describing
+
 mtcarsDF.shape
 mtcarsDF.head(3)
 mtcarsDF.tail(4)
-mtcarsDF.describe
+mtcarsDF.describe()
 mtcarsDF.columns
 mtcarsDF.dtypes
 
@@ -47,16 +48,18 @@ mtcarsDF.loc['Fiat 128':,'wt':]
 mtcarsDF.at['Mazda RX4', 'mpg']
 mtcarsDF.at['Mazda RX4', 'mpg']
 
+
 #single values : iat : integer
 mtcarsDF.iat[0,0]
-mtcarsDF.iat[0,0:5]
+mtcarsDF.iat[0,0:2] #error BCZ it is for single value
 
 #set of values : loc : label value
 #purely label based indexing. This is a strict inclusion based protocol. Every label asked for must be in the index, or a KeyError will be raised. When slicing, both the start bound AND the stop bound are included, if present in the index. Integers are valid labels, but they refer to the label and not the position.
 mtcarsDF.index
-mtcarsDF.loc[['Mazda 4X4']]
-mtcarsDF.loc['Mazda 4X4', ['mpg']]
-mtcarsDF.loc[7:9]
+mtcarsDF.loc[['Mazda RX4']]
+mtcarsDF.loc['Mazda RX4', ['mpg']]
+
+mtcarsDF.iloc[7:9]
 
 #loc : purely label based indexing
 mtcarsDF
@@ -112,10 +115,10 @@ mtcars[mtcarsDF['gear'] == 3]  #rows with T for gear=3
 mtcars[mtcarsDF['gear'] != 3, ['gear','am']]
 
 #another way
+mtcarsDF.gear.eq(3)
 mtcarsDF[mtcarsDF.gear.eq(3)]  #chaining method
 
 mtcarsDF[mtcarsDF['gear'] == 3 & mtcarsDF['am']== 0]
-
 mtcarsDF.gear.unique()
 mtcarsDF.carb.unique()
 
@@ -127,6 +130,7 @@ mtcarsDF[mtcarsDF.gear.isin(gears)]
 mtcarsDF[~ mtcarsDF.gear.isin(gears)] #cars of not gear(4,5)
 
 #multiple conditions
+
 carbs = [1,3]
 mtcarsDF[mtcarsDF.gear.isin(gears) & mtcarsDF.carb.isin(carbs) ]
 mtcarsDF[~ mtcarsDF.gear.isin(gears) & mtcarsDF.carb.isin(carbs) ]
