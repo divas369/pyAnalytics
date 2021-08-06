@@ -10,8 +10,8 @@ url= 'https://raw.githubusercontent.com/DUanalytics/datasets/master/csv/denco.cs
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 df= pd.read_csv(url)
-df
 df.shape #dim of data
 df.columns #name of columns
 df.head(3)
@@ -54,7 +54,40 @@ d.iloc[::-1]
 #Another way
 
 df.groupby('custname').revenue.sum().sort_values(ascending=False).head(5)
-df.groupby('custname').aggregate({'revenue':[np.sum,max]}).sort_values(ascending=False).head(5)
+
+df.groupby('custname')['revenue'].aggregate([np.sum,max,min]).sort_values(by='sum').head(5)
+
+# what part numbers bring in to significant portion of revenue- Maximize revenue from high value parts 
+
+df.groupby('partnum')['revenue'].aggregate([np.sum,max,min]).sort_values(by='sum',ascending=False).head(5)
+
+#top profit making items
+df.groupby('partnum')['margin'].aggregate([np.sum,max,min]).sort_values(by='sum',ascending=False).head(5)
+
+# Most sold items
+df.partnum.value_counts()
+#alternate
+df.groupby('partnum').size().sort_values(ascending=False).head(5)
+
+#which regions gave maximum revenue
+df.groupby('region')['revenue'].aggregate([np.sum,max,min]).sort_values(by='sum',ascending=False).head(5).plot(kind= "barh")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
