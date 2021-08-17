@@ -24,8 +24,8 @@ sleep.dropna(axis=1,inplace=False).head()
 sleep.dropna(axis=0,inplace=False).head()                
 sleep.shape
 #keep only the rows with at least 4 non-na values:
-sleep.dropna(thresh=4, axis=0, inplace=False).shape
-sleep.dropna(thresh=55, axis=1, inplace=False).shape
+sleep.dropna(thresh=10, axis=0, inplace=False).shape #atleast data in 10 columns in 1row
+sleep.dropna(thresh=55, axis=1, inplace=False).shape#atleast data in 55 rows in 1 column
 s1= np.int(.6 * len(sleep)) ; s1
 #t1=55
 len(sleep)
