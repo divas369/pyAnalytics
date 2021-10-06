@@ -36,12 +36,14 @@ df['ST_NUM'].isnull().sum()  #how many missing
 #In this column, there’s four missing values.n/a, NA, —, na
 df
 df.isnull().sum()  #how many missing in each column
+df.isnull().sum(axis=1)  #how many missing in each row
 df['NUM_BEDROOMS'].isnull()
 df['NUM_BEDROOMS']   #2. 5. 8 are missing, but 8 is not showing
 df.NUM_BEDROOMS.value_counts()
 np.mean(df.NUM_BEDROOMS)
 
 #we can specify at the time of import as which type of values to mark missing
+
 # Making a list of missing value types
 missing_values = ["n/a", "na", "--"]
 df2 = pd.read_csv(url, na_values = missing_values)
@@ -58,11 +60,16 @@ df2.isnull().values.any()
 df2.isnull().sum().sum()
 df2.isnull().sum(axis=0)  #column
 df2.isnull().sum(axis=1)  #row
+df2.shape
+df2.shape[0]
+df2.shape[1]
+((df2.isnull().sum().sum())/(df2.shape[0]*df2.shape[1]))*100
+
 
 #%%%replacing Missing values
 # Replace missing values with a number
 df2['ST_NUM']
-df2['ST_NUM'].fillna(125, inplace=True)
+df2['ST_NUM'].fillna(125, inplace=True) #inplace=True original dataframe is changed 
 df2
 
 # Location based replacement
@@ -70,7 +77,6 @@ df2.loc[2,'ST_NUM'] = 300
 df2
 
 # Replace using median 
-df2['NUM_BEDROOMS']
 df2['NUM_BEDROOMS'].median()
 median = df2['NUM_BEDROOMS'].median()
 median

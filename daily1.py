@@ -1,4 +1,4 @@
-#Daily Practise File
+     #Daily Practise File
 #-----------------------------
 #Data Structures
 #List - ordered collection of items, mutable(changeable) : [square ]
